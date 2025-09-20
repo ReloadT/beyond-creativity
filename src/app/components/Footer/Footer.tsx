@@ -3,6 +3,16 @@
 import { useState } from 'react';
 import styles from './Footer.module.css';
 
+// Helper function to escape HTML special characters
+const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
+
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -33,10 +43,14 @@ export default function Footer() {
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || isLoading) return;
+    
+    // Sanitize email input
+    const sanitizedEmail = escapeHtml(email.trim());
+    if (!sanitizedEmail || isLoading) return;
 
     setIsLoading(true);
     try {
+      // Simulate API call with sanitized email
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSubscribed(true);
       setEmail('');
@@ -57,13 +71,13 @@ export default function Footer() {
             </span>
           </div>
           <p className={styles.tagline}>
-            Malawi's premier video production studio. Telling African stories with passion and excellence.
+            Malawi&apos;s premier video production studio. Telling African stories with passion and excellence.
           </p>
           <div className={styles.contactInfo}>
             <a href={`mailto:${companyInfo.email}`} className={styles.contactLink}>
               {companyInfo.email}
             </a>
-            <a href={`tel:${companyInfo.phone}`} className={styles.contactLink}>
+            <a href={`tel:${escapeHtml(companyInfo.phone)}`} className={styles.contactLink}>
               {companyInfo.phone}
             </a>
             <p className={styles.address}>{companyInfo.address}</p>
@@ -79,7 +93,7 @@ export default function Footer() {
                   href={item.href}
                   className={styles.navLink}
                 >
-                  {item.label}
+                  {escapeHtml(item.label)}
                 </a>
               </li>
             ))}
@@ -89,12 +103,9 @@ export default function Footer() {
         <div className={styles.servicesSection}>
           <h3 className={styles.sectionTitle}>Our Services</h3>
           <ul className={styles.servicesList}>
-            <li>Corporate Videos</li>
-            <li>TV Commercials</li>
-            <li>Event Coverage</li>
-            <li>Documentaries</li>
-            <li>Social Media Content</li>
-            <li>Music Videos</li>
+            {['Corporate Videos', 'TV Commercials', 'Event Coverage', 'Documentaries', 'Social Media Content', 'Music Videos'].map(service => (
+              <li key={service}>{escapeHtml(service)}</li>
+            ))}
           </ul>
         </div>
 
@@ -106,7 +117,7 @@ export default function Footer() {
           
           {isSubscribed ? (
             <div className={styles.successMessage}>
-              <span className={styles.successIcon}>✓</span>
+              <span className={styles.successIcon}>&#10003;</span>
               Thank you for subscribing!
             </div>
           ) : (
@@ -119,6 +130,7 @@ export default function Footer() {
                 className={styles.newsletterInput}
                 required
                 disabled={isLoading}
+                maxLength={150}
               />
               <button
                 type="submit"
@@ -141,21 +153,21 @@ export default function Footer() {
           {socialLinks.map((social) => (
             <a
               key={social.label}
-              href={social.href}
+              href={escapeHtml(social.href)}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
-              aria-label={social.label}
+              aria-label={escapeHtml(social.label)}
             >
               <span className={styles.socialIcon}>{social.icon}</span>
-              <span className={styles.socialText}>{social.label}</span>
+              <span className={styles.socialText}>{escapeHtml(social.label)}</span>
             </a>
           ))}
         </div>
 
         <div className={styles.legalSection}>
           <p className={styles.copyright}>
-            © {currentYear} Beyond Creativity Malawi. All rights reserved.
+            &copy; {currentYear} Beyond Creativity Malawi. All rights reserved.
           </p>
           <div className={styles.legalLinks}>
             <a href="/privacy" className={styles.legalLink}>Privacy Policy</a>
@@ -169,7 +181,7 @@ export default function Footer() {
         className={styles.backToTop}
         aria-label="Back to top"
       >
-        ↑
+        &uarr;
       </button>
     </footer>
   );

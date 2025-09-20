@@ -4,6 +4,16 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './Testimonials.module.css';
 
+// Helper function to escape HTML special characters
+const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
+
 type Testimonial = {
   id: string;
   name: string;
@@ -44,7 +54,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
         key={i}
         className={`${styles.star} ${i < rating ? styles.filled : ''}`}
       >
-        ★
+        &#9733;
       </span>
     ));
   };
@@ -55,7 +65,9 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
     <div className={styles.testimonialsContainer}>
       <div className={styles.header}>
         <h2 className={styles.title}>What Our Clients Say</h2>
-        <p className={styles.subtitle}>Hear from Malawian businesses and creatives we've worked with</p>
+        <p className={styles.subtitle}>
+          Hear from Malawian businesses and creatives we&apos;ve worked with
+        </p>
       </div>
 
       <div className={styles.carousel}>
@@ -74,15 +86,15 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                 </div>
 
                 <div className={styles.quoteContainer}>
-                  <span className={styles.quoteIcon}>❝</span>
-                  <p className={styles.quote}>"{testimonial.quote}"</p>
+                  <span className={styles.quoteIcon}>&#8220;</span>
+                  <p className={styles.quote}>&ldquo;{escapeHtml(testimonial.quote)}&rdquo;</p>
                 </div>
 
                 <div className={styles.author}>
                   <div className={styles.photoContainer}>
                     <Image
-                      src={testimonial.photo}
-                      alt={`Photo of ${testimonial.name}`}
+                      src={escapeHtml(testimonial.photo)}
+                      alt={`Photo of ${escapeHtml(testimonial.name)}`}
                       width={80}
                       height={80}
                       className={styles.photo}
@@ -91,10 +103,10 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
                     <div className={styles.photoBorder}></div>
                   </div>
                   <div className={styles.authorInfo}>
-                    <p className={styles.name}>{testimonial.name}</p>
-                    <p className={styles.position}>{testimonial.position}</p>
+                    <p className={styles.name}>{escapeHtml(testimonial.name)}</p>
+                    <p className={styles.position}>{escapeHtml(testimonial.position)}</p>
                     {testimonial.company && (
-                      <p className={styles.company}>{testimonial.company}</p>
+                      <p className={styles.company}>{escapeHtml(testimonial.company)}</p>
                     )}
                   </div>
                 </div>
@@ -110,14 +122,14 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
               onClick={() => goToSlide((currentIndex - 1 + testimonials.length) % testimonials.length)}
               aria-label="Previous testimonial"
             >
-              ←
+              &larr;
             </button>
             <button
               className={styles.navButton}
               onClick={() => goToSlide((currentIndex + 1) % testimonials.length)}
               aria-label="Next testimonial"
             >
-              →
+              &rarr;
             </button>
 
             <div className={styles.dots}>
@@ -136,15 +148,15 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
 
       <div className={styles.trustBadges}>
         <div className={styles.trustBadge}>
-          <span className={styles.badgeIcon}>⭐</span>
+          <span className={styles.badgeIcon}>&#11088;</span>
           <span>Rated 4.9/5 Stars</span>
         </div>
         <div className={styles.trustBadge}>
-          <span className={styles.badgeIcon}>💼</span>
+          <span className={styles.badgeIcon}>&#128188;</span>
           <span>200+ Projects</span>
         </div>
         <div className={styles.trustBadge}>
-          <span className={styles.badgeIcon}>👍</span>
+          <span className={styles.badgeIcon}>&#128077;</span>
           <span>98% Would Recommend</span>
         </div>
       </div>

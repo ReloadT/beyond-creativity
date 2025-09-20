@@ -4,6 +4,16 @@ import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import styles from './VideoGallery.module.css';
 
+// Helper function to escape HTML special characters
+const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
+
 type Video = {
   id: string;
   title: string;
@@ -40,8 +50,9 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
   };
 
   const handleVideoClick = (video: Video) => {
-    // Open video in lightbox or new tab
-    window.open(video.url, '_blank');
+    // Sanitize URL before opening
+    const sanitizedUrl = escapeHtml(video.url);
+    window.open(sanitizedUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -61,10 +72,10 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
               className={`${styles.categoryButton} ${
                 selectedCategory === category ? styles.active : ''
               }`}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => setSelectedCategory(escapeHtml(category))}
               aria-pressed={selectedCategory === category}
             >
-              {category}
+              {escapeHtml(category)}
               <span className={styles.categoryCount}>
                 {category === 'All' ? videos.length : videos.filter(v => v.category === category).length}
               </span>
@@ -85,8 +96,8 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
           >
             <div className={styles.thumbnailContainer}>
               <Image
-                src={video.thumbnail}
-                alt={`Thumbnail for ${video.title}`}
+                src={escapeHtml(video.thumbnail)}
+                alt={`Thumbnail for ${escapeHtml(video.title)}`}
                 width={400}
                 height={250}
                 className={styles.thumbnail}
@@ -94,19 +105,19 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
               />
               
               <div className={`${styles.thumbnailOverlay} ${hoveredVideo === video.id ? styles.hovered : ''}`}>
-                <span className={styles.categoryBadge}>{video.category}</span>
+                <span className={styles.categoryBadge}>{escapeHtml(video.category)}</span>
                 
                 <div className={styles.videoMeta}>
                   {video.duration && (
-                    <span className={styles.duration}>{video.duration}</span>
+                    <span className={styles.duration}>{escapeHtml(video.duration)}</span>
                   )}
                   {video.views && (
-                    <span className={styles.views}>{formatViews(video.views)}</span>
+                    <span className={styles.views}>{escapeHtml(formatViews(video.views))}</span>
                   )}
                 </div>
                 
                 <div className={styles.playButton}>
-                  <span className={styles.playIcon}>▶</span>
+                  <span className={styles.playIcon}>&#9654;</span>
                   <span className={styles.playText}>Play Video</span>
                 </div>
               </div>
@@ -116,13 +127,13 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
 
             <div className={styles.videoInfo}>
               <h3 id={`video-title-${video.id}`} className={styles.videoTitle}>
-                {video.title}
+                {escapeHtml(video.title)}
               </h3>
-              <p className={styles.videoDescription}>{video.description}</p>
+              <p className={styles.videoDescription}>{escapeHtml(video.description)}</p>
               
               <div className={styles.videoActions}>
                 <button className={styles.watchButton}>
-                  <span className={styles.watchIcon}>🎬</span>
+                  <span className={styles.watchIcon}>&#127916;</span>
                   Watch Now
                 </button>
                 <button className={styles.detailsButton}>
@@ -136,9 +147,9 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
 
       {filteredVideos.length === 0 && (
         <div className={styles.noResults}>
-          <div className={styles.noResultsIcon}>📹</div>
+          <div className={styles.noResultsIcon}>&#128249;</div>
           <h3>No videos found</h3>
-          <p>We couldn't find any videos in this category.</p>
+          <p>We couldn&apos;t find any videos in this category.</p>
           <button 
             className={styles.resetFilter}
             onClick={() => setSelectedCategory('All')}

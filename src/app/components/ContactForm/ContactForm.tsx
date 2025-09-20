@@ -3,6 +3,21 @@
 import { useState } from 'react';
 import styles from './ContactForm.module.css';
 
+// Helper function to escape HTML special characters
+const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+};
+
+// Helper function to validate and sanitize input
+const sanitizeInput = (input: string): string => {
+  return escapeHtml(input.trim());
+};
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({ 
     name: '', 
@@ -29,21 +44,24 @@ export default function ContactForm() {
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
     
-    if (!formData.name.trim()) {
+    const sanitizedName = sanitizeInput(formData.name);
+    if (!sanitizedName) {
       newErrors.name = 'Name is required';
-    } else if (formData.name.trim().length < 2) {
+    } else if (sanitizedName.length < 2) {
       newErrors.name = 'Name must be at least 2 characters';
     }
     
-    if (!formData.email.trim()) {
+    const sanitizedEmail = sanitizeInput(formData.email);
+    if (!sanitizedEmail) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(sanitizedEmail)) {
       newErrors.email = 'Please enter a valid email address';
     }
     
-    if (!formData.message.trim()) {
+    const sanitizedMessage = sanitizeInput(formData.message);
+    if (!sanitizedMessage) {
       newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
+    } else if (sanitizedMessage.length < 10) {
       newErrors.message = 'Message must be at least 10 characters';
     }
     
@@ -75,7 +93,16 @@ export default function ContactForm() {
     
     const validationErrors = validate();
     if (Object.keys(validationErrors).length === 0) {
-      // Simulate API call
+      // Sanitize all data before sending
+      const sanitizedData = {
+        name: sanitizeInput(formData.name),
+        email: sanitizeInput(formData.email),
+        message: sanitizeInput(formData.message),
+        company: sanitizeInput(formData.company),
+        projectType: sanitizeInput(formData.projectType)
+      };
+      
+      // Simulate API call with sanitized data
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       setSubmitted(true);
@@ -84,7 +111,6 @@ export default function ContactForm() {
       setTouched({});
     } else {
       setErrors(validationErrors);
-      // Mark all fields as touched to show errors
       setTouched({
         name: true,
         email: true,
@@ -101,10 +127,10 @@ export default function ContactForm() {
     return (
       <div className={styles.successContainer}>
         <div className={styles.successContent}>
-          <div className={styles.successIcon}>✓</div>
+          <div className={styles.successIcon}>&#10003;</div>
           <h3 className={styles.successTitle}>Message Sent Successfully!</h3>
           <p className={styles.successMessage}>
-            Thank you for reaching out. We'll get back to you within 24 hours.
+            Thank you for reaching out. We&apos;ll get back to you within 24 hours.
           </p>
           <button 
             onClick={() => setSubmitted(false)}
@@ -128,12 +154,11 @@ export default function ContactForm() {
         <div className={styles.formHeader}>
           <h2 id="form-title" className={styles.formTitle}>Get In Touch</h2>
           <p className={styles.formSubtitle}>
-            Ready to bring your vision to life? Let's start a conversation about your project.
+            Ready to bring your vision to life? Let&apos;s start a conversation about your project.
           </p>
         </div>
 
         <div className={styles.formGrid}>
-          {/* Name Field */}
           <div className={styles.formGroup}>
             <label htmlFor="name" className={styles.label}>
               Full Name *
@@ -150,6 +175,7 @@ export default function ContactForm() {
               className={`${styles.input} ${errors.name ? styles.errorInput : ''} ${touched.name ? styles.touched : ''}`}
               placeholder="Enter your full name"
               disabled={isSubmitting}
+              maxLength={100}
             />
             {errors.name && touched.name && (
               <span id="name-error" role="alert" className={styles.errorMessage}>
@@ -158,7 +184,6 @@ export default function ContactForm() {
             )}
           </div>
 
-          {/* Email Field */}
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.label}>
               Email Address *
@@ -175,6 +200,7 @@ export default function ContactForm() {
               className={`${styles.input} ${errors.email ? styles.errorInput : ''} ${touched.email ? styles.touched : ''}`}
               placeholder="your.email@example.com"
               disabled={isSubmitting}
+              maxLength={150}
             />
             {errors.email && touched.email && (
               <span id="email-error" role="alert" className={styles.errorMessage}>
@@ -183,7 +209,6 @@ export default function ContactForm() {
             )}
           </div>
 
-          {/* Company Field */}
           <div className={styles.formGroup}>
             <label htmlFor="company" className={styles.label}>
               Company
@@ -198,10 +223,10 @@ export default function ContactForm() {
               className={styles.input}
               placeholder="Your company name (optional)"
               disabled={isSubmitting}
+              maxLength={100}
             />
           </div>
 
-          {/* Project Type Field */}
           <div className={styles.formGroup}>
             <label htmlFor="projectType" className={styles.label}>
               Project Type
@@ -222,7 +247,6 @@ export default function ContactForm() {
             </select>
           </div>
 
-          {/* Message Field */}
           <div className={`${styles.formGroup} ${styles.fullWidth}`}>
             <label htmlFor="message" className={styles.label}>
               Message *
@@ -239,6 +263,7 @@ export default function ContactForm() {
               className={`${styles.textarea} ${errors.message ? styles.errorInput : ''} ${touched.message ? styles.touched : ''}`}
               placeholder="Tell us about your project, timeline, and any specific requirements..."
               disabled={isSubmitting}
+              maxLength={1000}
             />
             {errors.message && touched.message && (
               <span id="message-error" role="alert" className={styles.errorMessage}>
@@ -262,7 +287,7 @@ export default function ContactForm() {
           ) : (
             <>
               Send Message
-              <span className={styles.arrow} aria-hidden="true">→</span>
+              <span className={styles.arrow} aria-hidden="true">&rarr;</span>
             </>
           )}
         </button>
