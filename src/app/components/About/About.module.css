@@ -201,6 +201,114 @@
   font-weight: 300;
 }
 
+/* Add leadership styles to About.module.css */
+.leadership {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.directorCard {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.directorImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.directorIcon {
+  font-size: 2.5rem;
+}
+
+.directorInfo {
+  flex: 1;
+}
+
+.directorName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.directorTitle {
+  color: #4ecdc4;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+}
+
+.directorBio {
+  color: #cccccc;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .leadership {
+    margin-top: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .directorCard {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .directorImage {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .directorIcon {
+    font-size: 2rem;
+  }
+  
+  .directorName {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .leadership {
+    padding: 1.25rem;
+  }
+  
+  .directorImage {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .directorIcon {
+    font-size: 1.8rem;
+  }
+  
+  .directorName {
+    font-size: 1.1rem;
+  }
+  
+  .directorTitle {
+    font-size: 0.95rem;
+  }
+  
+  .directorBio {
+    font-size: 0.9rem;
+  }
+}
+
 /* Background Elements */
 .backgroundElements {
   position: absolute;
@@ -358,5 +466,174 @@
 
   .feature::before {
     display: none;
+  }
+}
+
+/* Add these media queries to your existing About.module.css */
+
+@media (max-width: 768px) {
+  .about {
+    padding: 5rem 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .preTitle {
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .heading {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .paragraph {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 400px;
+  }
+
+  .stat {
+    padding: 1.5rem 1rem;
+  }
+
+  .statNumber {
+    font-size: 1.8rem;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+  }
+
+  .feature {
+    padding: 2rem 1.5rem;
+  }
+
+  .featureIcon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .featureTitle {
+    font-size: 1.2rem;
+  }
+
+  .featureDesc {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 4rem 1rem;
+  }
+
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat {
+    padding: 1.25rem 1rem;
+  }
+
+  .statNumber {
+    font-size: 1.6rem;
+  }
+
+  .features {
+    gap: 1.25rem;
+  }
+
+  .feature {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .featureIcon {
+    font-size: 1.8rem;
+  }
+
+  .featureTitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .featureDesc {
+    font-size: 0.9rem;
+  }
+
+  .circle:nth-child(1) {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+  }
+
+  .circle:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    top: 70%;
+  }
+}
+
+@media (max-width: 360px) {
+  .about {
+    padding: 3rem 0.75rem;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .paragraph {
+    font-size: 0.95rem;
+  }
+
+  .stat {
+    padding: 1rem 0.75rem;
+  }
+
+  .statNumber {
+    font-size: 1.4rem;
+  }
+
+  .statLabel {
+    font-size: 0.75rem;
+  }
+
+  .feature {
+    padding: 1.25rem 1rem;
   }
 }

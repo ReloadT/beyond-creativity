@@ -19,16 +19,16 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { href: 'https://twitter.com/beyondcreativity', label: 'Twitter', icon: '🐦' },
-    { href: 'https://linkedin.com/company/beyondcreativity', label: 'LinkedIn', icon: '💼' },
-    { href: 'https://instagram.com/beyondcreativity', label: 'Instagram', icon: '📸' },
-    { href: 'https://youtube.com/@beyondcreativity', label: 'YouTube', icon: '🎥' }
+    { href: 'https://facebook.com/beyondcreativitymw', label: 'Facebook', icon: '📘' },
+    { href: 'https://instagram.com/beyondcreativitymw', label: 'Instagram', icon: '📸' },
+    { href: 'https://youtube.com/@beyondcreativitymw', label: 'YouTube', icon: '🎥' },
+    { href: 'https://tiktok.com/@beyondcreativitymw', label: 'TikTok', icon: '💃' }
   ];
 
   const companyInfo = {
-    email: 'hello@beyondcreativity.com',
-    phone: '+1 (555) 123-4567',
-    address: '123 Creative Street, Innovation City, IC 12345'
+    email: 'info@beyondcreativity.mw',
+    phone: '+265 888 123 456',
+    address: 'Kanjedza, Blantyre, Malawi'
   };
 
   const handleSubscribe = async (e: React.FormEvent) => {
@@ -37,7 +37,6 @@ export default function Footer() {
 
     setIsLoading(true);
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSubscribed(true);
       setEmail('');
@@ -51,7 +50,6 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        {/* Brand Section */}
         <div className={styles.brandSection}>
           <div className={styles.logo}>
             <span className={styles.logoText}>
@@ -59,7 +57,7 @@ export default function Footer() {
             </span>
           </div>
           <p className={styles.tagline}>
-            Transforming visions into compelling visual stories that captivate audiences and elevate brands.
+            Malawi's premier video production studio. Telling African stories with passion and excellence.
           </p>
           <div className={styles.contactInfo}>
             <a href={`mailto:${companyInfo.email}`} className={styles.contactLink}>
@@ -72,7 +70,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Navigation */}
         <nav aria-label="Footer navigation" className={styles.navSection}>
           <h3 className={styles.sectionTitle}>Quick Links</h3>
           <ul className={styles.navList}>
@@ -89,24 +86,22 @@ export default function Footer() {
           </ul>
         </nav>
 
-        {/* Services */}
         <div className={styles.servicesSection}>
           <h3 className={styles.sectionTitle}>Our Services</h3>
           <ul className={styles.servicesList}>
             <li>Corporate Videos</li>
-            <li>Commercial Production</li>
+            <li>TV Commercials</li>
             <li>Event Coverage</li>
             <li>Documentaries</li>
             <li>Social Media Content</li>
-            <li>Post-Production</li>
+            <li>Music Videos</li>
           </ul>
         </div>
 
-        {/* Newsletter */}
         <div className={styles.newsletterSection}>
           <h3 className={styles.sectionTitle}>Stay Updated</h3>
           <p className={styles.newsletterText}>
-            Subscribe to our newsletter for the latest projects and insights.
+            Subscribe for the latest projects and industry insights in Malawi.
           </p>
           
           {isSubscribed ? (
@@ -141,7 +136,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Section */}
       <div className={styles.footerBottom}>
         <div className={styles.socialLinks}>
           {socialLinks.map((social) => (
@@ -161,17 +155,15 @@ export default function Footer() {
 
         <div className={styles.legalSection}>
           <p className={styles.copyright}>
-            © {currentYear} Beyond Creativity. All rights reserved.
+            © {currentYear} Beyond Creativity Malawi. All rights reserved.
           </p>
           <div className={styles.legalLinks}>
             <a href="/privacy" className={styles.legalLink}>Privacy Policy</a>
             <a href="/terms" className={styles.legalLink}>Terms of Service</a>
-            <a href="/cookies" className={styles.legalLink}>Cookie Policy</a>
           </div>
         </div>
       </div>
 
-      {/* Back to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={styles.backToTop}

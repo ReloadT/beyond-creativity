@@ -1,4 +1,3 @@
-// src/lib/cms.ts
 export async function fetchContent<T>(type: string): Promise<T> {
   await new Promise((r) => setTimeout(r, 100));
 
@@ -7,27 +6,33 @@ export async function fetchContent<T>(type: string): Promise<T> {
       return [
         {
           id: 'vid1',
-          title: 'Creative Commercial',
-          description: 'A sleek commercial showcasing our video production skills.',
-          url: 'https://example.com/videos/creative-commercial',
-          thumbnail: '/thumbnails/creative-commercial.jpg',
-          category: 'Commercials',
+          title: 'Malawi Tourism Campaign',
+          description: 'Showcasing the beauty of Malawi through stunning visuals and authentic storytelling.',
+          url: 'https://example.com/videos/malawi-tourism',
+          thumbnail: '/thumbnails/malawi-tourism.jpg',
+          category: 'Documentaries',
+          duration: '3:45',
+          views: 125000
         },
         {
           id: 'vid2',
-          title: 'Documentary Teaser',
-          description: 'A teaser for an upcoming documentary project.',
-          url: 'https://example.com/videos/documentary-teaser',
-          thumbnail: '/thumbnails/documentary-teaser.jpg',
-          category: 'Documentaries',
+          title: 'Lilongwe Business Expo',
+          description: 'Comprehensive coverage of the largest business exhibition in Malawi.',
+          url: 'https://example.com/videos/business-expo',
+          thumbnail: '/thumbnails/business-expo.jpg',
+          category: 'Events',
+          duration: '5:20',
+          views: 89000
         },
         {
           id: 'vid3',
-          title: 'Event Highlights',
-          description: 'Highlights from a recent corporate event.',
-          url: 'https://example.com/videos/event-highlights',
-          thumbnail: '/thumbnails/event-highlights.jpg',
-          category: 'Events',
+          title: 'Malawian Brand Commercial',
+          description: 'Professional commercial for a leading Malawian consumer brand.',
+          url: 'https://example.com/videos/brand-commercial',
+          thumbnail: '/thumbnails/brand-commercial.jpg',
+          category: 'Commercials',
+          duration: '0:45',
+          views: 150000
         },
       ] as unknown as T;
 
@@ -36,26 +41,30 @@ export async function fetchContent<T>(type: string): Promise<T> {
         {
           id: 'srv1',
           title: 'Corporate Videos',
-          description: 'Professional videos tailored for corporate branding and communication.',
+          description: 'Professional videos for Malawian businesses and organizations.',
           icon: '🎥',
+          features: ['Brand storytelling', 'CEO messages', 'Company profiles', 'Training videos']
         },
         {
           id: 'srv2',
           title: 'Event Coverage',
-          description: 'Capturing your events with high-quality video production.',
+          description: 'Comprehensive coverage of weddings, conferences, and cultural events.',
           icon: '📅',
+          features: ['Multi-camera setup', 'Live streaming', 'Highlight reels', 'Full documentation']
         },
         {
           id: 'srv3',
-          title: 'Creative Storytelling',
-          description: 'Engaging narratives to bring your brand story to life.',
-          icon: '✍️',
+          title: 'TV Commercials',
+          description: 'High-impact commercials for Malawian television and digital platforms.',
+          icon: '📺',
+          features: ['Script development', 'Professional actors', 'Location scouting', 'TV optimization']
         },
         {
           id: 'srv4',
-          title: 'Post-Production',
-          description: 'Expert editing, color grading, and sound mixing.',
+          title: 'Documentaries',
+          description: 'Authentic stories that capture the essence of Malawian culture and life.',
           icon: '🎬',
+          features: ['Research & development', 'Cultural sensitivity', 'Local storytelling', 'Global appeal']
         },
       ] as unknown as T;
 
@@ -63,24 +72,30 @@ export async function fetchContent<T>(type: string): Promise<T> {
       return [
         {
           id: 't1',
-          name: 'Alice Johnson',
-          quote: 'Beyond Creativity transformed our vision into an amazing video!',
-          photo: '/clients/alice.jpg',
-          position: 'Marketing Director, Acme Corp',
+          name: 'Ace Magic',
+          quote: 'Beyond Creativity transformed my card trick performances into magical visual experiences that captivated audiences across Africa!',
+          photo: '/clients/ace-magic.jpg',
+          position: 'Professional Magician',
+          company: 'Ace Magic Entertainment',
+          rating: 5
         },
         {
           id: 't2',
-          name: 'John Smith',
-          quote: 'Professional and creative team delivering outstanding results.',
-          photo: '/clients/john.jpg',
-          position: 'CEO, Innovate LLC',
+          name: 'Lucus Home',
+          quote: 'As both CEO and actor, I appreciate how Beyond Creativity understands the unique needs of Malawian businesses and creatives.',
+          photo: '/clients/lucus-home.jpg',
+          position: 'CEO & Actor',
+          company: 'Home Productions',
+          rating: 5
         },
         {
           id: 't3',
-          name: 'Sofia Lee',
-          quote: 'Highly recommend Beyond Creativity for any video project!',
-          photo: '/clients/sofia.jpg',
-          position: 'Founder, BrightStart',
+          name: 'Sarah Banda',
+          quote: 'Their understanding of African storytelling and Malawian culture made our documentary truly authentic and powerful.',
+          photo: '/clients/sarah-banda.jpg',
+          position: 'Documentary Producer',
+          company: 'Malawi Stories',
+          rating: 5
         },
       ] as unknown as T;
 

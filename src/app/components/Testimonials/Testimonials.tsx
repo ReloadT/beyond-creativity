@@ -53,13 +53,11 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
 
   return (
     <div className={styles.testimonialsContainer}>
-      {/* Header */}
       <div className={styles.header}>
-        <h2 className={styles.title}>Client Testimonials</h2>
-        <p className={styles.subtitle}>Hear what our clients have to say about our work</p>
+        <h2 className={styles.title}>What Our Clients Say</h2>
+        <p className={styles.subtitle}>Hear from Malawian businesses and creatives we've worked with</p>
       </div>
 
-      {/* Carousel */}
       <div className={styles.carousel}>
         <div className={styles.carouselTrack}>
           {testimonials.map((testimonial, index) => (
@@ -71,18 +69,15 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
               aria-hidden={index !== currentIndex}
             >
               <div className={styles.testimonialCard}>
-                {/* Rating */}
                 <div className={styles.rating}>
                   {renderStars(testimonial.rating)}
                 </div>
 
-                {/* Quote */}
                 <div className={styles.quoteContainer}>
                   <span className={styles.quoteIcon}>❝</span>
                   <p className={styles.quote}>"{testimonial.quote}"</p>
                 </div>
 
-                {/* Author */}
                 <div className={styles.author}>
                   <div className={styles.photoContainer}>
                     <Image
@@ -108,7 +103,6 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           ))}
         </div>
 
-        {/* Navigation */}
         {testimonials.length > 1 && (
           <>
             <button
@@ -126,7 +120,6 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
               →
             </button>
 
-            {/* Dots */}
             <div className={styles.dots}>
               {testimonials.map((_, index) => (
                 <button
@@ -141,7 +134,6 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
         )}
       </div>
 
-      {/* Trust Badges */}
       <div className={styles.trustBadges}>
         <div className={styles.trustBadge}>
           <span className={styles.badgeIcon}>⭐</span>
@@ -149,7 +141,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
         </div>
         <div className={styles.trustBadge}>
           <span className={styles.badgeIcon}>💼</span>
-          <span>100+ Projects</span>
+          <span>200+ Projects</span>
         </div>
         <div className={styles.trustBadge}>
           <span className={styles.badgeIcon}>👍</span>

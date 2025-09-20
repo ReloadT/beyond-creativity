@@ -623,3 +623,179 @@
     color: #000000;
   }
 }
+
+/* Add to Services.module.css */
+@media (max-width: 768px) {
+  .servicesSection {
+    padding: 4rem 1rem;
+  }
+
+  .sectionHeader {
+    margin-bottom: 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+
+  .sectionSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .serviceCard {
+    padding: 1.75rem;
+  }
+
+  .iconWrapper {
+    width: 65px;
+    height: 65px;
+  }
+
+  .serviceIcon {
+    font-size: 2rem;
+  }
+
+  .serviceTitle {
+    font-size: 1.3rem;
+  }
+
+  .serviceDescription {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .featuresList {
+    margin-bottom: 1.5rem;
+    gap: 0.625rem;
+  }
+
+  .featureItem {
+    padding: 0.625rem;
+  }
+
+  .featureText {
+    font-size: 0.9rem;
+  }
+
+  .cardActions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .ctaSection {
+    padding: 2rem 1.5rem;
+  }
+
+  .ctaText {
+    font-size: 1.2rem;
+  }
+
+  .ctaButton {
+    padding: 1.1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicesSection {
+    padding: 3rem 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 1rem;
+  }
+
+  .serviceCard {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+
+  .iconWrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .serviceIcon {
+    font-size: 1.8rem;
+  }
+
+  .serviceTitle {
+    font-size: 1.2rem;
+  }
+
+  .serviceDescription {
+    font-size: 0.95rem;
+  }
+
+  .featureItem {
+    padding: 0.5rem;
+  }
+
+  .featureCheckmark {
+    font-size: 1rem;
+  }
+
+  .featureText {
+    font-size: 0.85rem;
+  }
+
+  .ctaSection {
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+
+  .ctaText {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ctaButton {
+    padding: 1rem 1.75rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .servicesSection {
+    padding: 2.5rem 0.5rem;
+  }
+
+  .serviceCard {
+    padding: 1.25rem;
+  }
+
+  .iconWrapper {
+    width: 55px;
+    height: 55px;
+  }
+
+  .serviceIcon {
+    font-size: 1.6rem;
+  }
+
+  .serviceTitle {
+    font-size: 1.1rem;
+  }
+
+  .serviceDescription {
+    font-size: 0.9rem;
+  }
+}

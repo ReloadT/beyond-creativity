@@ -406,3 +406,182 @@
     display: none;
   }
 }
+
+/* Add to Testimonials.module.css */
+@media (max-width: 768px) {
+  .testimonialsContainer {
+    padding: 4rem 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .testimonialCard {
+    padding: 2.5rem;
+  }
+
+  .rating {
+    margin-bottom: 1.5rem;
+  }
+
+  .star {
+    font-size: 1.3rem;
+  }
+
+  .quoteContainer {
+    margin-bottom: 2rem;
+  }
+
+  .quoteIcon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .quote {
+    font-size: 1.2rem;
+  }
+
+  .photoContainer {
+    width: 70px;
+    height: 70px;
+  }
+
+  .photo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .name {
+    font-size: 1.1rem;
+  }
+
+  .position {
+    font-size: 0.95rem;
+  }
+
+  .company {
+    font-size: 0.85rem;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .navButton:first-child {
+    left: -15px;
+  }
+
+  .navButton:last-child {
+    right: -15px;
+  }
+
+  .dots {
+    margin-top: 2rem;
+  }
+
+  .trustBadges {
+    gap: 1.5rem;
+    padding-top: 2.5rem;
+  }
+
+  .trustBadge {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonialsContainer {
+    padding: 3rem 1rem;
+  }
+
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .testimonialCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .quoteIcon {
+    font-size: 2.5rem;
+  }
+
+  .quote {
+    font-size: 1.1rem;
+  }
+
+  .photoContainer {
+    width: 60px;
+    height: 60px;
+  }
+
+  .photo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .position {
+    font-size: 0.9rem;
+  }
+
+  .navButton {
+    display: none;
+  }
+
+  .trustBadges {
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+
+  .trustBadge {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .testimonialsContainer {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .testimonialCard {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .quote {
+    font-size: 1rem;
+  }
+
+  .quoteIcon {
+    font-size: 2rem;
+  }
+
+  .star {
+    font-size: 1.1rem;
+  }
+}

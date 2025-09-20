@@ -31,35 +31,49 @@ export default function About() {
       className={`${styles.about} ${isVisible ? styles.visible : ''}`}
     >
       <div className={styles.container}>
-        {/* Header */}
         <div className={styles.header}>
-          <div className={styles.preTitle}>OUR STORY</div>
+          <div className={styles.preTitle}>OUR MALAWIAN STORY</div>
           <h2 id="about-heading" className={styles.heading}>
-            Crafting Visual <span className={styles.accent}>Excellence</span>
+            Crafting African <span className={styles.accent}>Excellence</span>
           </h2>
           <div className={styles.underline}></div>
         </div>
 
-        {/* Main Content */}
         <div className={styles.content}>
           <div className={styles.textContent}>
             <p className={styles.paragraph}>
-              Since 2010, Beyond Creativity has been at the forefront of video production, 
-              transforming visions into compelling visual narratives that resonate with audiences 
-              and elevate brands to new heights.
+              Since 2019, Beyond Creativity has been at the forefront of video production in Malawi, 
+              transforming visions into compelling visual narratives that resonate with African audiences 
+              and elevate brands across the continent.
             </p>
             
             <p className={styles.paragraph}>
-              Our team of award-winning filmmakers, creative directors, and technical experts 
-              collaborates closely with clients to deliver exceptional results across corporate 
-              branding, commercial campaigns, documentaries, and live event coverage.
+              Founded and led by Director Nosh, our team of creative professionals collaborates closely 
+              with clients to deliver exceptional results across corporate branding, commercial campaigns, 
+              documentaries, and event coverage with authentic African storytelling.
             </p>
+
+            {/* Leadership Section */}
+            <div className={styles.leadership}>
+              <div className={styles.directorCard}>
+                <div className={styles.directorImage}>
+                  <span className={styles.directorIcon}>👑</span>
+                </div>
+                <div className={styles.directorInfo}>
+                  <h4 className={styles.directorName}>Director Nosh</h4>
+                  <p className={styles.directorTitle}>Founder & Creative Director</p>
+                  <p className={styles.directorBio}>
+                    Visionary leader with a passion for authentic African storytelling and 
+                    innovative video production techniques.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Stats */}
           <div className={styles.statsGrid}>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>500+</div>
+              <div className={styles.statNumber}>200+</div>
               <div className={styles.statLabel}>Projects Delivered</div>
             </div>
             <div className={styles.stat}>
@@ -67,22 +81,21 @@ export default function About() {
               <div className={styles.statLabel}>Client Satisfaction</div>
             </div>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>13+</div>
+              <div className={styles.statNumber}>5+</div>
               <div className={styles.statLabel}>Years Experience</div>
             </div>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>100+</div>
-              <div className={styles.statLabel}>Global Clients</div>
+              <div className={styles.statNumber}>50+</div>
+              <div className={styles.statLabel}>Malawian Clients</div>
             </div>
           </div>
         </div>
 
-        {/* Features */}
         <div className={styles.features}>
           <div className={styles.feature}>
             <div className={styles.featureIcon}>✨</div>
-            <h3 className={styles.featureTitle}>Creative Vision</h3>
-            <p className={styles.featureDesc}>Innovative storytelling that captures attention and drives engagement</p>
+            <h3 className={styles.featureTitle}>African Storytelling</h3>
+            <p className={styles.featureDesc}>Authentic narratives that capture the essence of African culture and values</p>
           </div>
           
           <div className={styles.feature}>
@@ -93,13 +106,12 @@ export default function About() {
           
           <div className={styles.feature}>
             <div className={styles.featureIcon}>🤝</div>
-            <h3 className={styles.featureTitle}>Client Partnership</h3>
-            <p className={styles.featureDesc}>Collaborative approach ensuring your vision becomes reality</p>
+            <h3 className={styles.featureTitle}>Local Expertise</h3>
+            <p className={styles.featureDesc}>Deep understanding of the Malawian and African market landscape</p>
           </div>
         </div>
       </div>
 
-      {/* Background Elements */}
       <div className={styles.backgroundElements}>
         <div className={styles.circle}></div>
         <div className={styles.circle}></div>
